@@ -8,6 +8,6 @@ public class Criterion {
     private int serialNum;
     private int priority;
     private String criterion;
-    private double evalOpt1;
-    private double evalOpt2;
+    private int evalOpt1;
+    private int evalOpt2;
 }

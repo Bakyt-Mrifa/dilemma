@@ -60,13 +60,13 @@
       <TextField fx:id="txtOption1" layoutX="589.0" layoutY="86.0" prefHeight="25.0" prefWidth="231.0" promptText="Вариант-1" />
       <TextField fx:id="txtOption2" layoutX="591.0" layoutY="125.0" prefHeight="25.0" prefWidth="231.0" promptText="Вариант-2" />
       <Line endX="120.0" layoutX="701.0" layoutY="163.0" startX="-123.0" />
-      <Label layoutX="587.0" layoutY="176.0" text="Введите критерий:" textFill="#f5f102">
+      <Label layoutX="587.0" layoutY="163.0" text="Введите критерий:" textFill="#f5f102">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCriteria" layoutX="588.0" layoutY="197.0" onKeyTyped="#onKeyTyped" prefHeight="25.0" prefWidth="231.0" promptText="Критерий" />
-      <Label layoutX="589.0" layoutY="233.0" prefHeight="61.0" prefWidth="239.0" text="Оцените по трехбальной шкале.&#10;На сколько &quot;Варианты&quot; соответствуют &#10;данному критерию?" textFill="#daf200">
+      <TextField fx:id="txtCriteria" layoutX="588.0" layoutY="184.0" onKeyTyped="#onKeyTyped" prefHeight="25.0" prefWidth="231.0" promptText="Критерий" />
+      <Label layoutX="584.0" layoutY="215.0" prefHeight="78.0" prefWidth="239.0" text="Оцените по трехбальной шкале.&#10;На сколько, &quot;Варианты&quot; соответствуют &#10;данному критерию?&#10;&#9;Больше - значит лучше!" textFill="#daf200">
          <font>
             <Font size="13.0" />
          </font>

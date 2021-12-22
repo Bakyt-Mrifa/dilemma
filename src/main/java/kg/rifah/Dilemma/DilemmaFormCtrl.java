@@ -2,6 +2,8 @@ package kg.rifah.Dilemma;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -9,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -30,10 +33,10 @@ public class DilemmaFormCtrl {
     private TableColumn<Criterion, String> colCrit;
 
     @FXML
-    private TableColumn<Criterion, Double> colEvalOp1;
+    private TableColumn<Criterion, Integer> colEvalOp1;
 
     @FXML
-    private TableColumn<Criterion, Double> colEvalOp2;
+    private TableColumn<Criterion, Integer> colEvalOp2;
 
     @FXML
     private Button btnUp;
@@ -108,6 +111,7 @@ public class DilemmaFormCtrl {
             checkOption();
         }
     }
+
     List<Criterion> criteria = new ArrayList<Criterion>();
 
     private String option1 = null;
@@ -127,12 +131,12 @@ public class DilemmaFormCtrl {
     }
 
     private void setColumnAsOptions(String opt1, String opt2) {
-        if(colEvalOp1.getText().length()==0||colEvalOp2.getText().length()==0){
+        if (colEvalOp1.getText().length() == 0 || colEvalOp2.getText().length() == 0) {
             colEvalOp1.setText("Оцентка для\nВариант-1");
             colEvalOp2.setText("Оцентка для\nВариант-2");
-        }else {
-            colEvalOp1.setText("Оцентка для\n"+opt1);
-            colEvalOp2.setText("Оцентка для\n"+opt2);
+        } else {
+            colEvalOp1.setText("Оцентка для\n" + opt1);
+            colEvalOp2.setText("Оцентка для\n" + opt2);
         }
     }
 
@@ -158,6 +162,17 @@ public class DilemmaFormCtrl {
         setAcceptOnlyDouble(txtEvalOpti1);
         setAcceptOnlyDouble(txtEvalOpti2);
 
+        colSN.setCellValueFactory(new PropertyValueFactory<Criterion, Integer>("serialNum"));
+        colCrit.setCellValueFactory(new PropertyValueFactory<Criterion, String>("criterion"));
+        colEvalOp1.setCellValueFactory(new PropertyValueFactory<Criterion, Integer>("evalOpt1"));
+        colEvalOp2.setCellValueFactory(new PropertyValueFactory<Criterion, Integer>("evalOpt2"));
+        refresh();
+
+    }
+
+    private void refresh() {
+        ObservableList ol = FXCollections.observableList(criteria);
+        tbCrit.setItems(ol);
     }
 
 
@@ -165,24 +180,26 @@ public class DilemmaFormCtrl {
 
 
         String critName = txtCriteria.getText();
-        double evalOpt1 = Double.parseDouble(txtEvalOpti1.getText());
-        double evalOpt2 = Double.parseDouble(txtEvalOpti2.getText());
+/*        double evalOpt1 = Double.parseDouble(txtEvalOpti1.getText());
+        double evalOpt2 = Double.parseDouble(txtEvalOpti2.getText());*/
+        int evalOpt1=Integer.parseInt(txtEvalOpti1.getText());
+        int evalOpt2=Integer.parseInt(txtEvalOpti2.getText());
 
-
-         Criterion criterion = new Criterion();
+        Criterion criterion = new Criterion();
 
         criterion.setCriterion(critName);
         criterion.setEvalOpt1(evalOpt1);
         criterion.setEvalOpt2(evalOpt2);
         if (criteria != null) {
-            criterion.setSerialNum(criteria.size()+1);
-            System.out.println(criteria.size()+" size");
+            criterion.setSerialNum(criteria.size() + 1);
+            System.out.println(criteria.size() + " size");
 
         } else {
             criterion.setSerialNum(1);
         }
         criteria.add(criterion);
-        System.out.println("criteria: "+criteria);
+        System.out.println("criteria: " + criteria);
+        refresh();
     }
 
     private void onExitBtn(ActionEvent event) {
@@ -202,7 +219,7 @@ public class DilemmaFormCtrl {
                     value.setText(oldValue);
                     Toolkit.getDefaultToolkit().beep();
                 }
-                if(Integer.parseInt(newValue)<1||Integer.parseInt(newValue)>3){
+                if (Integer.parseInt(newValue) < 1 || Integer.parseInt(newValue) > 3) {
                     Alert fill = new Alert(Alert.AlertType.ERROR);
                     fill.setTitle("Ошибка");
                     fill.setHeaderText("Введите значение от 1 до 3");
