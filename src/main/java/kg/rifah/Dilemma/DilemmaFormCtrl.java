@@ -9,11 +9,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import kg.rifah.Dilemma.models.entity.Criterion;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DilemmaFormCtrl {
@@ -101,16 +103,13 @@ public class DilemmaFormCtrl {
 
     @FXML
     void onKeyTyped(KeyEvent event) {
+
         if (KeyEvent.KEY_TYPED.equals(event.getEventType())) {
-            System.out.println("TypeFirst");
             checkOption();
         }
-//        txtCriteria.setOnAction(errFill);
-
     }
+    List<Criterion> criteria = new ArrayList<Criterion>();
 
-    private List<Criterion> criteria = null;
-    private Criterion criterion = null;
     private String option1 = null;
     private String option2 = null;
 
@@ -118,11 +117,22 @@ public class DilemmaFormCtrl {
     private void checkOption() {
         option1 = txtOption1.getText();
         option2 = txtOption2.getText();
+        setColumnAsOptions(option1, option2);
         if (option1.length() == 0 || option2.length() == 0) {
             Alert fill = new Alert(Alert.AlertType.ERROR);
             fill.setTitle("Ошибка");
             fill.setHeaderText("Заполните поля выше (Варианты)!!!");
             fill.showAndWait();
+        }
+    }
+
+    private void setColumnAsOptions(String opt1, String opt2) {
+        if(colEvalOp1.getText().length()==0||colEvalOp2.getText().length()==0){
+            colEvalOp1.setText("Оцентка для\nВариант-1");
+            colEvalOp2.setText("Оцентка для\nВариант-2");
+        }else {
+            colEvalOp1.setText("Оцентка для\n"+opt1);
+            colEvalOp2.setText("Оцентка для\n"+opt2);
         }
     }
 
@@ -157,19 +167,22 @@ public class DilemmaFormCtrl {
         String critName = txtCriteria.getText();
         double evalOpt1 = Double.parseDouble(txtEvalOpti1.getText());
         double evalOpt2 = Double.parseDouble(txtEvalOpti2.getText());
+
+
+         Criterion criterion = new Criterion();
+
+        criterion.setCriterion(critName);
+        criterion.setEvalOpt1(evalOpt1);
+        criterion.setEvalOpt2(evalOpt2);
         if (criteria != null) {
-            criterion.setSerialNum(criteria.get(criteria.size() - 1).getSerialNum() + 1);
-            criterion.setCriteria(critName);
-            criterion.setEvalOpt1(evalOpt1);
-            criterion.setEvalOpt2(evalOpt2);
-            criteria.add(criterion);
+            criterion.setSerialNum(criteria.size()+1);
+            System.out.println(criteria.size()+" size");
+
         } else {
             criterion.setSerialNum(1);
-            criterion.setCriteria(critName);
-            criterion.setEvalOpt1(evalOpt1);
-            criterion.setEvalOpt2(evalOpt2);
-            criteria.add(criterion);
         }
+        criteria.add(criterion);
+        System.out.println("criteria: "+criteria);
     }
 
     private void onExitBtn(ActionEvent event) {
