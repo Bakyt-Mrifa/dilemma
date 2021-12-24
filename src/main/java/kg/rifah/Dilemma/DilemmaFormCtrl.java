@@ -5,19 +5,19 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import kg.rifah.Dilemma.models.entity.Criterion;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,13 +86,13 @@ public class DilemmaFormCtrl {
         if (event.getSource().equals(btnExit)) {
             onExitBtn(event);
         } else if (event.getSource().equals(btnUp)) {
-
+            onBtnUpClicked();
         } else if (event.getSource().equals(btnDown)) {
-
+            onBtnDownClicked();
         } else if (event.getSource().equals(btnAddCrit)) {
-            addCriteria();
+            addCriterion();
         } else if (event.getSource().equals(btnEditField)) {
-
+            editCriterion();
         } else if (event.getSource().equals(btnRemove)) {
 
         } else if (event.getSource().equals(btnClearTable)) {
@@ -170,37 +170,44 @@ public class DilemmaFormCtrl {
 
     }
 
-    private void refresh() {
-        ObservableList ol = FXCollections.observableList(criteria);
-        tbCrit.setItems(ol);
-    }
 
-
-    private void addCriteria() {
-
-
+    private void addCriterion() {
+        if (txtEvalOpti1.getText().length() == 0 || txtEvalOpti2.getText().length() == 0) {
+            Alert message = new Alert(Alert.AlertType.ERROR);
+            message.setTitle("Ошибка заполнения");
+            message.setHeaderText("Поля оценки не могут быть пустыми");
+            message.showAndWait();
+            return;
+        }
         String critName = txtCriteria.getText();
-/*        double evalOpt1 = Double.parseDouble(txtEvalOpti1.getText());
-        double evalOpt2 = Double.parseDouble(txtEvalOpti2.getText());*/
-        int evalOpt1=Integer.parseInt(txtEvalOpti1.getText());
-        int evalOpt2=Integer.parseInt(txtEvalOpti2.getText());
+        //check for uniq criterion
+        for (Criterion crit : criteria) {
+            if (crit.getCriterion().equals(critName)) {
+                Alert message = new Alert(Alert.AlertType.ERROR);
+                message.setTitle("Ошибка заполнения");
+                message.setHeaderText("Такой критерий уже существует");
+                message.showAndWait();
+                return;
+            }
+
+        }
+        int evalOpt1 = Integer.parseInt(txtEvalOpti1.getText());
+        int evalOpt2 = Integer.parseInt(txtEvalOpti2.getText());
 
         Criterion criterion = new Criterion();
-
         criterion.setCriterion(critName);
         criterion.setEvalOpt1(evalOpt1);
         criterion.setEvalOpt2(evalOpt2);
         if (criteria != null) {
             criterion.setSerialNum(criteria.size() + 1);
-            System.out.println(criteria.size() + " size");
-
         } else {
             criterion.setSerialNum(1);
         }
         criteria.add(criterion);
-        System.out.println("criteria: " + criteria);
         refresh();
+        txtCriteria.requestFocus();
     }
+
 
     private void onExitBtn(ActionEvent event) {
         /*Stage stage = (Stage) btnExit.getScene().getWindow();
@@ -225,11 +232,57 @@ public class DilemmaFormCtrl {
                     fill.setHeaderText("Введите значение от 1 до 3");
                     fill.showAndWait();
                 }
-
             }
         });
-
         return value;
     }
 
+    private void onBtnUpClicked() {
+        if (tbCrit.getSelectionModel().getSelectedItem().getSerialNum() != 1) {
+            Criterion criterion = tbCrit.getSelectionModel().getSelectedItem();
+            Criterion criterion1 = criteria.get(criterion.getSerialNum() - 2);
+            criterion1.setSerialNum(criterion.getSerialNum());
+            criterion.setSerialNum(criterion1.getSerialNum() - 1);
+            for (Criterion crit : criteria) {
+                if (crit.equals(criterion)) {
+                    criteria.set(criterion.getSerialNum() - 1, criterion);
+                    criteria.set(criterion.getSerialNum(), criterion1);
+                }
+            }
+        }
+        refresh();
+    }
+
+    private void onBtnDownClicked() {
+        if (tbCrit.getSelectionModel().getSelectedItem().getSerialNum() != criteria.size()) {
+            Criterion criterion = tbCrit.getSelectionModel().getSelectedItem();
+            Criterion criterion1 = criteria.get(criterion.getSerialNum());
+            criterion1.setSerialNum(criterion.getSerialNum());
+            criterion.setSerialNum(criterion1.getSerialNum() + 1);
+            for (Criterion crit : criteria) {
+                if (crit.equals(criterion)) {
+                    criteria.set(criterion1.getSerialNum() - 1, criterion1);
+                    criteria.set(criterion1.getSerialNum(), criterion);
+                }
+            }
+        }
+        refresh();
+    }
+    private void editCriterion() {
+            Stage stage=new Stage();
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/EditCriterionForm.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void refresh() {
+        ObservableList ol = FXCollections.observableList(criteria);
+        tbCrit.setItems(ol);
+        tbCrit.getSortOrder().add(colSN);
+        txtEvalOpti1.clear();
+        txtEvalOpti2.clear();
+    }
 }
