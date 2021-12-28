@@ -101,9 +101,9 @@ public class DilemmaFormCtrl {
         } else if (event.getSource().equals(btnRemove)) {
             removeCriterion();
         } else if (event.getSource().equals(btnClearTable)) {
-
+            clearTable();
         } else if (event.getSource().equals(btnGetResult)) {
-
+            getResult();
         } else if (event.getSource().equals(mnuAbout)) {
             about();
         }
@@ -277,23 +277,29 @@ public class DilemmaFormCtrl {
     }
 
     private void editCriterion() {
-        Stage stage = new Stage();
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditCriterionForm.fxml"));
-            loader.load();
-            stage.setScene(new Scene((Parent) loader.getRoot()));
-            EditCriterionFormCtrl editCriterionFormCtrl = loader.getController();
-            final Criterion criterion = tbCrit.getSelectionModel().getSelectedItem();
-            editCriterionFormCtrl.initData(stage, criterion);
-            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                public void handle(WindowEvent event) {
-                    refresh();
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
+        final Criterion criterion = tbCrit.getSelectionModel().getSelectedItem();
+
+        if(criterion!=null) {
+
+            Stage stage = new Stage();
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditCriterionForm.fxml"));
+                loader.load();
+                stage.setScene(new Scene((Parent) loader.getRoot()));
+                EditCriterionFormCtrl editCriterionFormCtrl = loader.getController();
+
+                editCriterionFormCtrl.initData(stage, criterion);
+                stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                    public void handle(WindowEvent event) {
+                        refresh();
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage.show();
         }
-        stage.show();
+        else checkElement();
     }
 
     public void getEditCrit(Criterion criterion) {
@@ -305,20 +311,36 @@ public class DilemmaFormCtrl {
 
     private void removeCriterion() {
         Criterion criterion = tbCrit.getSelectionModel().getSelectedItem();
-        if(criterion==null){
+        if (criterion!=null) {
+            criteria.remove(criterion);
+            int a = 1;
+            for (Criterion crit :
+                    criteria) {
+                crit.setSerialNum(a++);
+            }
+            refresh();
+        }
+        else checkElement();
+    }
+
+    private void clearTable() {
+            criteria.clear();
+            refresh();
+
+
+    }
+
+    private void getResult() {
+
+    }
+
+    private void checkElement() {
+
             Toolkit.getDefaultToolkit().beep();
             Alert fill = new Alert(Alert.AlertType.ERROR);
             fill.setTitle("Ошибка");
             fill.setHeaderText("Выберите элемент");
             fill.showAndWait();
-        }
-        criteria.remove(criterion);
-        int a=1;
-        for (Criterion crit :
-                criteria) {
-            crit.setSerialNum(a++);
-        }
-        refresh();
     }
 
     private void refresh() {
