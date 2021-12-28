@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="kg.rifah.Dilemma.EditCriterionFormCtrl"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="183.0" prefWidth="255.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kg.rifah.Dilemma.EditCriterionFormCtrl">
+   <children>
+      <Label layoutX="24.0" layoutY="28.0" text="Критерий:" />
+      <Label layoutX="24.0" layoutY="66.0" text="Оценка для Вариант-1:" />
+      <Label layoutX="24.0" layoutY="96.0" text="Оценка для Вариант-2:" />
+      <TextField fx:id="txtEditCrit" layoutX="86.0" layoutY="24.0" />
+      <TextField fx:id="txtEditEvalOpt1" layoutX="165.0" layoutY="62.0" prefHeight="25.0" prefWidth="69.0" />
+      <TextField fx:id="txtEditEvalOpt2" layoutX="165.0" layoutY="92.0" prefHeight="25.0" prefWidth="69.0" />
+      <Button fx:id="btnEdit" defaultButton="true" layoutX="24.0" layoutY="136.0" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="25.0" prefWidth="99.0" text="Изменить" />
+      <Button fx:id="btnCancel" cancelButton="true" layoutX="135.0" layoutY="136.0" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="25.0" prefWidth="99.0" text="Отмена" />
+   </children>
 </AnchorPane>

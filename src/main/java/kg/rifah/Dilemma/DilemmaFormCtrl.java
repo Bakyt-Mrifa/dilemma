@@ -5,8 +5,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -14,10 +17,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import kg.rifah.Dilemma.models.entity.Criterion;
 
 import java.awt.*;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,15 +99,16 @@ public class DilemmaFormCtrl {
         } else if (event.getSource().equals(btnEditField)) {
             editCriterion();
         } else if (event.getSource().equals(btnRemove)) {
-
+            removeCriterion();
         } else if (event.getSource().equals(btnClearTable)) {
 
         } else if (event.getSource().equals(btnGetResult)) {
 
         } else if (event.getSource().equals(mnuAbout)) {
-            getMessage();
+            about();
         }
     }
+
 
     @FXML
     void onKeyTyped(KeyEvent event) {
@@ -112,11 +118,10 @@ public class DilemmaFormCtrl {
         }
     }
 
-    List<Criterion> criteria = new ArrayList<Criterion>();
+    private static List<Criterion> criteria = new ArrayList<Criterion>();
 
     private String option1 = null;
     private String option2 = null;
-
 
     private void checkOption() {
         option1 = txtOption1.getText();
@@ -140,7 +145,7 @@ public class DilemmaFormCtrl {
         }
     }
 
-    private void getMessage() {
+    private void about() {
         Alert message = new Alert(Alert.AlertType.INFORMATION);
         message.setTitle("Об этой программе");
         message.setHeaderText("\"Дилемма\"");
@@ -158,9 +163,9 @@ public class DilemmaFormCtrl {
 
     @FXML
     void initialize() {
-//Поля принимают только Double значения, но пока еще типа String
-        setAcceptOnlyDouble(txtEvalOpti1);
-        setAcceptOnlyDouble(txtEvalOpti2);
+//Поля принимают только Integer значения, но пока еще типа String
+        setAcceptOnlyInt(txtEvalOpti1);
+        setAcceptOnlyInt(txtEvalOpti2);
 
         colSN.setCellValueFactory(new PropertyValueFactory<Criterion, Integer>("serialNum"));
         colCrit.setCellValueFactory(new PropertyValueFactory<Criterion, String>("criterion"));
@@ -218,7 +223,7 @@ public class DilemmaFormCtrl {
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
     }
 
-    private TextField setAcceptOnlyDouble(final TextField value) {
+    public TextField setAcceptOnlyInt(final TextField value) {
 
         value.textProperty().addListener(new ChangeListener<String>() {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -227,10 +232,12 @@ public class DilemmaFormCtrl {
                     Toolkit.getDefaultToolkit().beep();
                 }
                 if (Integer.parseInt(newValue) < 1 || Integer.parseInt(newValue) > 3) {
+                    Toolkit.getDefaultToolkit().beep();
                     Alert fill = new Alert(Alert.AlertType.ERROR);
                     fill.setTitle("Ошибка");
                     fill.setHeaderText("Введите значение от 1 до 3");
                     fill.showAndWait();
+                    value.setText(oldValue);
                 }
             }
         });
@@ -268,14 +275,50 @@ public class DilemmaFormCtrl {
         }
         refresh();
     }
+
     private void editCriterion() {
-            Stage stage=new Stage();
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/EditCriterionForm.fxml"));
+        Stage stage = new Stage();
         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditCriterionForm.fxml"));
             loader.load();
+            stage.setScene(new Scene((Parent) loader.getRoot()));
+            EditCriterionFormCtrl editCriterionFormCtrl = loader.getController();
+            final Criterion criterion = tbCrit.getSelectionModel().getSelectedItem();
+            editCriterionFormCtrl.initData(stage, criterion);
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                public void handle(WindowEvent event) {
+                    refresh();
+                }
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
+        stage.show();
+    }
+
+    public void getEditCrit(Criterion criterion) {
+        System.out.println("Принимаем: " + criterion);
+        System.out.println(criteria);
+        criteria.set(criterion.getSerialNum() - 1, criterion);
+        refresh();
+    }
+
+    private void removeCriterion() {
+        Criterion criterion = tbCrit.getSelectionModel().getSelectedItem();
+        if(criterion==null){
+            Toolkit.getDefaultToolkit().beep();
+            Alert fill = new Alert(Alert.AlertType.ERROR);
+            fill.setTitle("Ошибка");
+            fill.setHeaderText("Выберите элемент");
+            fill.showAndWait();
+        }
+        criteria.remove(criterion);
+        int a=1;
+        for (Criterion crit :
+                criteria) {
+            crit.setSerialNum(a++);
+        }
+        refresh();
     }
 
     private void refresh() {
