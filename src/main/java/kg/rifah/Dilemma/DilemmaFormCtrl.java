@@ -137,10 +137,21 @@ public class DilemmaFormCtrl {
         option2 = txtOption2.getText();
         setColumnAsOptions(option1, option2);
         if (option1.length() == 0 || option2.length() == 0) {
+            Toolkit.getDefaultToolkit().beep();
+            txtCriteria.clear();
             Alert fill = new Alert(Alert.AlertType.ERROR);
             fill.setTitle("Ошибка");
             fill.setHeaderText("Заполните поля выше (Варианты)!!!");
             fill.showAndWait();
+            return;
+        }else if (txtOption1.getText().equals(txtOption2.getText())){
+            Toolkit.getDefaultToolkit().beep();
+            txtCriteria.clear();
+            Alert message = new Alert(Alert.AlertType.ERROR);
+            message.setTitle("Ошибка заполнения");
+            message.setHeaderText("Варианты не должны быть одинаковыми!!!");
+            message.showAndWait();
+            return;
         }
     }
 
@@ -164,7 +175,7 @@ public class DilemmaFormCtrl {
                 "Используйте эту программу для визуализации\n" +
                 "своего выбора и получения некоторой помощи\n" +
                 "и подсказки для принятия правильного решения\n\n" +
-                "Автор идеи:\nБахытжан, e-mail:bahytjan@gmail.com\n" +
+                "Автор идеи:\nСейтмухамбетов Бахытжан Нурханович\n\n" +
                 "Написал программу:\nБакыт Мамбеталиев, e-mail: Bakyt.mrifah@gmail.com");
         message.showAndWait();
     }
@@ -187,6 +198,7 @@ public class DilemmaFormCtrl {
 
     private void addCriterion() {
         if (txtEvalOpti1.getText().length() == 0 || txtEvalOpti2.getText().length() == 0) {
+            Toolkit.getDefaultToolkit().beep();
             Alert message = new Alert(Alert.AlertType.ERROR);
             message.setTitle("Ошибка заполнения");
             message.setHeaderText("Поля оценки не могут быть пустыми");
