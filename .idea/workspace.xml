@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae1905b4-de39-424e-891a-b23f366b4458" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exe/DilemmaXml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Dilemma.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kg/rifah/Dilemma/DilemmaFormCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kg/rifah/Dilemma/DilemmaFormCtrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/Dilemma.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kg/rifah/Dilemma/DilemmaFormCtrl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kg/rifah/Dilemma/DilemmaFormCtrl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kg/rifah/Dilemma/DilemmaFormCtrl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kg/rifah/Dilemma/DilemmaFormCtrl$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kg/rifah/Dilemma/DilemmaFormCtrl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kg/rifah/Dilemma/EditCriterionFormCtrl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kg/rifah/Dilemma/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kg/rifah/Dilemma/models/entity/Criterion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kg/rifah/Dilemma/models/services/CritServices.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -28,12 +25,12 @@
     <option name="delegatedBuild" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="24" column="68" selection-start-line="24" selection-start-column="68" selection-end-line="24" selection-end-column="68" />
+            <state relative-caret-position="765">
+              <caret line="45" column="10" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -45,8 +42,6 @@
               <caret column="24" selection-start-column="8" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#150#151#0" expanded="true" />
-                <element signature="e#168#169#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,38 +49,19 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/DilemmaForm.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="63" column="82" selection-start-line="63" selection-start-column="82" selection-end-line="63" selection-end-column="82" />
+            <state relative-caret-position="1003">
+              <caret line="59" column="15" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="15" />
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/kg/rifah/Dilemma/DilemmaFormCtrl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="144" column="31" selection-start-line="144" selection-start-column="31" selection-end-line="144" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2395#2406#0" expanded="true" />
-                <element signature="method#setColumnAsOptions#0;class#DilemmaFormCtrl#0" />
-                <element signature="method#initialize#0;class#DilemmaFormCtrl#0" />
-                <element signature="method#onExitBtn#0;class#DilemmaFormCtrl#0" />
-                <element signature="method#setAcceptOnlyInt#0;class#DilemmaFormCtrl#0" />
-                <element signature="e#7490#8260#0" expanded="true" />
-                <element signature="e#8259#8260#0" expanded="true" />
-                <element signature="method#onBtnUpClicked#0;class#DilemmaFormCtrl#0" />
-                <element signature="method#onBtnDownClicked#0;class#DilemmaFormCtrl#0" />
-                <element signature="method#editCriterion#0;class#DilemmaFormCtrl#0" />
-                <element signature="e#10336#10504#0" expanded="true" />
-                <element signature="e#10503#10504#0" expanded="true" />
-                <element signature="method#getEditCrit#0;class#DilemmaFormCtrl#0" />
-                <element signature="method#removeCriterion#0;class#DilemmaFormCtrl#0" />
-                <element signature="method#clearTable#0;class#DilemmaFormCtrl#0" />
-                <element signature="method#checkElement#0;class#DilemmaFormCtrl#0" />
-              </folding>
+            <state relative-caret-position="391">
+              <caret line="427" column="159" selection-start-line="427" selection-start-column="159" selection-end-line="427" selection-end-column="159" />
             </state>
           </provider>
         </entry>
@@ -93,7 +69,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kg/rifah/Dilemma/EditCriterionFormCtrl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="671">
+            <state relative-caret-position="1139">
               <caret line="73" selection-start-line="73" selection-end-line="73" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -192,10 +168,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1928" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="170" />
+    <option name="y" value="91" />
+    <option name="width" value="1026" />
+    <option name="height" value="546" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -203,6 +179,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -248,7 +225,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -303,45 +279,47 @@
       <option name="presentableId" value="Default" />
       <updated>1639633538482</updated>
       <workItem from="1639633541424" duration="110282000" />
+      <workItem from="1640877520529" duration="92000" />
+      <workItem from="1640878199917" duration="281000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110282000" />
+    <option name="totallyTimeSpent" value="110655000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13646056" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14069591" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" weight="0.32936078" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32936078" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" weight="0.32995737" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32936078" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="6" weight="0.32995737" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
     <layout-to-restore>
       <window_info id="Image Layers" order="0" />
@@ -379,10 +357,25 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/kg/rifah/Dilemma/models/services/CritServices.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/EditCriterionForm.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/NumberFormatException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="64" column="15" selection-start-line="64" selection-start-column="15" selection-end-line="64" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="10" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -398,28 +391,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/EditCriterionForm.fxml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/DilemmaForm.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="1003">
+          <caret line="59" column="15" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="15" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kg/rifah/Dilemma/EditCriterionFormCtrl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
+        <state relative-caret-position="1139">
           <caret line="73" selection-start-line="73" selection-end-line="73" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/NumberFormatException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="64" column="15" selection-start-line="64" selection-start-column="15" selection-end-line="64" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -430,44 +416,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kg/rifah/Dilemma/models/services/CritServices.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="24" column="68" selection-start-line="24" selection-start-column="68" selection-end-line="24" selection-end-column="68" />
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/DilemmaForm.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="63" column="82" selection-start-line="63" selection-start-column="82" selection-end-line="63" selection-end-column="82" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kg/rifah/Dilemma/DilemmaFormCtrl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="144" column="31" selection-start-line="144" selection-start-column="31" selection-end-line="144" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2395#2406#0" expanded="true" />
-            <element signature="method#setColumnAsOptions#0;class#DilemmaFormCtrl#0" />
-            <element signature="method#initialize#0;class#DilemmaFormCtrl#0" />
-            <element signature="method#onExitBtn#0;class#DilemmaFormCtrl#0" />
-            <element signature="method#setAcceptOnlyInt#0;class#DilemmaFormCtrl#0" />
-            <element signature="e#7490#8260#0" expanded="true" />
-            <element signature="e#8259#8260#0" expanded="true" />
-            <element signature="method#onBtnUpClicked#0;class#DilemmaFormCtrl#0" />
-            <element signature="method#onBtnDownClicked#0;class#DilemmaFormCtrl#0" />
-            <element signature="method#editCriterion#0;class#DilemmaFormCtrl#0" />
-            <element signature="e#10336#10504#0" expanded="true" />
-            <element signature="e#10503#10504#0" expanded="true" />
-            <element signature="method#getEditCrit#0;class#DilemmaFormCtrl#0" />
-            <element signature="method#removeCriterion#0;class#DilemmaFormCtrl#0" />
-            <element signature="method#clearTable#0;class#DilemmaFormCtrl#0" />
-            <element signature="method#checkElement#0;class#DilemmaFormCtrl#0" />
-          </folding>
+        <state relative-caret-position="391">
+          <caret line="427" column="159" selection-start-line="427" selection-start-column="159" selection-end-line="427" selection-end-column="159" />
         </state>
       </provider>
     </entry>

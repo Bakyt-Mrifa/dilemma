@@ -425,7 +425,7 @@ public class DilemmaFormCtrl {
         } else {
             badContent=("\n\n__________________________\n"+ new DecimalFormat("##.##").format(badOption) + "% - \"" + bad + "\" - Вариант не лучший. Но, лучше чем ничего");
         }
-        lblResult.setText(goodContent+"\n\n\ninfo: Отличный вариант от 1% до 20%"+badContent+"\n\n\ninfo: Наихудший вариант от 1% до 20%, а все что больше этого - имеет право на рассмотрение.");
+        lblResult.setText(goodContent+"\n\n\ninfo: Отличный вариант от 1% до 20%"+badContent+"\n\n\ninfo: Наихудший вариант от 20% и выше, а все что меньше 20%- имеет право на рассмотрение.");
     }
 
     private void checkElement() {
