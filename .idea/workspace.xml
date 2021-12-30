@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae1905b4-de39-424e-891a-b23f366b4458" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kg/rifah/Dilemma/DilemmaFormCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kg/rifah/Dilemma/DilemmaFormCtrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DilemmaForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DilemmaForm.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,8 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/DilemmaForm.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="197" lean-forward="true" selection-start-line="16" selection-start-column="180" selection-end-line="16" selection-end-column="197" />
+            <state relative-caret-position="204">
+              <caret line="12" column="197" lean-forward="true" selection-start-line="12" selection-start-column="197" selection-end-line="12" selection-end-column="197" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -55,15 +55,30 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/kg/rifah/Dilemma/DilemmaFormCtrl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="322" column="28" selection-start-line="322" selection-start-column="28" selection-end-line="322" selection-end-column="28" />
+            <state relative-caret-position="433">
+              <caret line="402" column="50" selection-start-line="402" selection-start-column="50" selection-end-line="402" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2395#2406#0" expanded="true" />
-                <element signature="e#6954#7724#0" expanded="true" />
-                <element signature="e#7723#7724#0" expanded="true" />
-                <element signature="e#9764#9916#0" expanded="true" />
-                <element signature="e#9915#9916#0" expanded="true" />
+                <element signature="method#checkOption#0;class#DilemmaFormCtrl#0" />
+                <element signature="method#setColumnAsOptions#0;class#DilemmaFormCtrl#0" />
+                <element signature="method#getMessage#0;class#DilemmaFormCtrl#0" />
+                <element signature="method#initialize#0;class#DilemmaFormCtrl#0" />
+                <element signature="method#addCriterion#0;class#DilemmaFormCtrl#0" />
+                <element signature="method#onExitBtn#0;class#DilemmaFormCtrl#0" />
+                <element signature="method#setAcceptOnlyInt#0;class#DilemmaFormCtrl#0" />
+                <element signature="e#7128#7898#0" expanded="true" />
+                <element signature="e#7897#7898#0" expanded="true" />
+                <element signature="method#onBtnUpClicked#0;class#DilemmaFormCtrl#0" />
+                <element signature="method#onBtnDownClicked#0;class#DilemmaFormCtrl#0" />
+                <element signature="method#editCriterion#0;class#DilemmaFormCtrl#0" />
+                <element signature="e#9974#10142#0" expanded="true" />
+                <element signature="e#10141#10142#0" expanded="true" />
+                <element signature="method#getEditCrit#0;class#DilemmaFormCtrl#0" />
+                <element signature="method#removeCriterion#0;class#DilemmaFormCtrl#0" />
+                <element signature="method#clearTable#0;class#DilemmaFormCtrl#0" />
+                <element signature="method#checkElement#0;class#DilemmaFormCtrl#0" />
+                <element signature="method#refresh#0;class#DilemmaFormCtrl#0" />
               </folding>
             </state>
           </provider>
@@ -210,7 +225,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../1.SpringBoot/SennaMed" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Сhocie" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
@@ -257,12 +272,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639633538482</updated>
-      <workItem from="1639633541424" duration="87545000" />
+      <workItem from="1639633541424" duration="106138000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87545000" />
+    <option name="totallyTimeSpent" value="106138000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
@@ -283,7 +298,7 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -377,8 +392,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/DilemmaForm.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="197" lean-forward="true" selection-start-line="16" selection-start-column="180" selection-end-line="16" selection-end-column="197" />
+        <state relative-caret-position="204">
+          <caret line="12" column="197" lean-forward="true" selection-start-line="12" selection-start-column="197" selection-end-line="12" selection-end-column="197" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -402,15 +417,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kg/rifah/Dilemma/DilemmaFormCtrl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="322" column="28" selection-start-line="322" selection-start-column="28" selection-end-line="322" selection-end-column="28" />
+        <state relative-caret-position="433">
+          <caret line="402" column="50" selection-start-line="402" selection-start-column="50" selection-end-line="402" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2395#2406#0" expanded="true" />
-            <element signature="e#6954#7724#0" expanded="true" />
-            <element signature="e#7723#7724#0" expanded="true" />
-            <element signature="e#9764#9916#0" expanded="true" />
-            <element signature="e#9915#9916#0" expanded="true" />
+            <element signature="method#checkOption#0;class#DilemmaFormCtrl#0" />
+            <element signature="method#setColumnAsOptions#0;class#DilemmaFormCtrl#0" />
+            <element signature="method#getMessage#0;class#DilemmaFormCtrl#0" />
+            <element signature="method#initialize#0;class#DilemmaFormCtrl#0" />
+            <element signature="method#addCriterion#0;class#DilemmaFormCtrl#0" />
+            <element signature="method#onExitBtn#0;class#DilemmaFormCtrl#0" />
+            <element signature="method#setAcceptOnlyInt#0;class#DilemmaFormCtrl#0" />
+            <element signature="e#7128#7898#0" expanded="true" />
+            <element signature="e#7897#7898#0" expanded="true" />
+            <element signature="method#onBtnUpClicked#0;class#DilemmaFormCtrl#0" />
+            <element signature="method#onBtnDownClicked#0;class#DilemmaFormCtrl#0" />
+            <element signature="method#editCriterion#0;class#DilemmaFormCtrl#0" />
+            <element signature="e#9974#10142#0" expanded="true" />
+            <element signature="e#10141#10142#0" expanded="true" />
+            <element signature="method#getEditCrit#0;class#DilemmaFormCtrl#0" />
+            <element signature="method#removeCriterion#0;class#DilemmaFormCtrl#0" />
+            <element signature="method#clearTable#0;class#DilemmaFormCtrl#0" />
+            <element signature="method#checkElement#0;class#DilemmaFormCtrl#0" />
+            <element signature="method#refresh#0;class#DilemmaFormCtrl#0" />
           </folding>
         </state>
       </provider>

@@ -11,18 +11,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import kg.rifah.Dilemma.models.entity.Criterion;
 
 import java.awt.*;
 import java.io.IOException;
-import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,8 +84,18 @@ public class DilemmaFormCtrl {
     private TextField txtEvalOpti2;
 
     @FXML
-    private MenuItem mnuAbout;
+    private Label lblResult;
 
+    @FXML
+    private Label lblAbout;
+
+
+    @FXML
+    void onMouseClicked(MouseEvent event) {
+        if (event.getSource().equals(lblAbout)) {
+            about();
+        }
+    }
 
     @FXML
     void onButtonClicked(ActionEvent event) {
@@ -104,8 +115,6 @@ public class DilemmaFormCtrl {
             clearTable();
         } else if (event.getSource().equals(btnGetResult)) {
             getResult();
-        } else if (event.getSource().equals(mnuAbout)) {
-            about();
         }
     }
 
@@ -279,7 +288,7 @@ public class DilemmaFormCtrl {
     private void editCriterion() {
         final Criterion criterion = tbCrit.getSelectionModel().getSelectedItem();
 
-        if(criterion!=null) {
+        if (criterion != null) {
 
             Stage stage = new Stage();
             try {
@@ -298,8 +307,7 @@ public class DilemmaFormCtrl {
                 e.printStackTrace();
             }
             stage.show();
-        }
-        else checkElement();
+        } else checkElement();
     }
 
     public void getEditCrit(Criterion criterion) {
@@ -311,7 +319,7 @@ public class DilemmaFormCtrl {
 
     private void removeCriterion() {
         Criterion criterion = tbCrit.getSelectionModel().getSelectedItem();
-        if (criterion!=null) {
+        if (criterion != null) {
             criteria.remove(criterion);
             int a = 1;
             for (Criterion crit :
@@ -319,28 +327,101 @@ public class DilemmaFormCtrl {
                 crit.setSerialNum(a++);
             }
             refresh();
-        }
-        else checkElement();
+        } else checkElement();
     }
 
     private void clearTable() {
-            criteria.clear();
-            refresh();
-
-
+        criteria.clear();
+        refresh();
     }
 
     private void getResult() {
-
-    }
-
-    private void checkElement() {
-
+        if (criteria.size() == 0) {
             Toolkit.getDefaultToolkit().beep();
             Alert fill = new Alert(Alert.AlertType.ERROR);
             fill.setTitle("Ошибка");
-            fill.setHeaderText("Выберите элемент");
+            fill.setHeaderText("Нет критериев");
+            fill.setContentText("Заполните критерии!!!\n" +
+                    "Рекомендуется заполнить более 10 критериев.\n" +
+                    "Чем больше критериев, тем точнее результат ;)\n\n" +
+                    "              Удачи!!!");
             fill.showAndWait();
+            return;
+        }
+        int a = criteria.size();
+        for (Criterion crit :
+                criteria) {
+            crit.setPriority(a--);
+        }
+        System.out.println(criteria + "Fill priority");
+        calculate();
+    }
+
+    private void calculate() {
+        int ideal = 0;
+        double opti1 = 0,
+               opti2 = 0;
+
+        for (int i = criteria.size(); i >= 0; i--) {
+            ideal = ideal + (i * 3);
+        }
+
+        for (Criterion crit :
+                criteria) {
+            opti1 = opti1 + crit.getPriority() * crit.getEvalOpt1();
+            opti2 = opti2 + crit.getPriority() * crit.getEvalOpt2();
+        }
+        System.out.println(ideal+" "+opti1+" "+opti2);
+
+        lblResult.setWrapText(true);
+        lblResult.setStyle("-fx-font-family: \"Comic Sans MS\"; -fx-font-size: 15; -fx-text-fill: #b4fff6;");
+
+        if (opti1 == opti2) {
+            lblResult.setStyle("-fx-font-family: \"Comic Sans MS\"; -fx-font-size: 20; -fx-text-fill: #b4fff6;");
+            lblResult.setText("Варианты абсолютно равны!!!");
+        } else if (opti1 > opti2) {
+            System.out.println("Отработал: "+opti1+">"+opti2);
+            result(ideal, opti1, opti2, txtOption1.getText(), txtOption2.getText());
+        } else {
+            System.out.println("Отработал: "+opti1+"<"+opti2);
+            result(ideal, opti2, opti1, txtOption2.getText(), txtOption1.getText());
+        }
+    }
+
+    private void result(Integer ideal, Double opt1, Double opt2, String good, String bad) {
+        double goodOption, badOption;
+
+        goodOption = new Double( (100)- opt1 / ideal * 100);
+        badOption = (100 - (opt2 / opt1 * 100));
+
+        System.out.println("Good: "+goodOption);
+        System.out.println("Bad: "+badOption);
+        String goodContent;
+        String badContent;
+        if (goodOption <= 20) {
+            goodContent=(new DecimalFormat("##.##").format(goodOption) + "% - \"" + good + "\" - Однозначно отличный вариант!!!\n" +
+                    "Очень рекомендуется к выбору");
+        } else {
+            goodContent=(new DecimalFormat("##.##").format(goodOption) + "% - \"" + good + "\" - Не худший вариант.\n" +
+                    "Лучше чем \"" + bad + " \", но не однозначно.\n" +
+                    "Не стоит спешить с выбором!");
+        }
+
+        if (badOption - 100 >= 20) {
+            badContent=("\n\n__________________________\n"+ new DecimalFormat("##.##").format(badOption) + "% - \"" + bad + "\" - Однозначно вариант \"ТУХЛЫЙ\"!!!\n" +
+                    "Очень не рекомендуется к выбору");
+        } else {
+            badContent=("\n\n__________________________\n"+ new DecimalFormat("##.##").format(badOption) + "% - \"" + bad + "\" - Вариант не лучший. Но, лучше чем ничего");
+        }
+        lblResult.setText(goodContent+"\n\n\ninfo: Отличный вариант от 1% до 20%"+badContent+"\n\n\ninfo: Наихудший вариант от 1% до 20%, а все что больше этого - имеет право на рассмотрение.");
+    }
+
+    private void checkElement() {
+        Toolkit.getDefaultToolkit().beep();
+        Alert fill = new Alert(Alert.AlertType.ERROR);
+        fill.setTitle("Ошибка");
+        fill.setHeaderText("Выберите элемент");
+        fill.showAndWait();
     }
 
     private void refresh() {
